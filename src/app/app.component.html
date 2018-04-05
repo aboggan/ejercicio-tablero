@@ -1,0 +1,42 @@
+<div class="container">
+  <div *ngFor="let post of _postsArray">
+    <div class="row">
+      <div class="menu col-sm-2">
+        <div *ngFor="let menu of post.menu" class="menu-item">
+          <div>{{menu}}</div>
+        </div> 
+      </div>
+
+      <div class="secciones col-sm-10">
+        <h2>Tablero de indicadores</h2> 
+        <div class="botones">
+          <div *ngFor="let seccion of post.sections" class="seccion-list">
+            <button (click)="mostrarSeccion(seccion.id)" id="btn-id-{{seccion.id}}">{{seccion.name}}</button>
+
+            
+          </div>
+        </div>
+        <div *ngFor="let seccion of post.sections" id="seccion-id-{{seccion.id}}" class="detalle-secciones hidden" >
+           
+            <div class="seccion-item card-group">
+                <div *ngFor="let indicador of seccion.kpis"  class="valores card ">
+                  
+                    <div class="card-body" >
+                      <h4>{{indicador.name}}</h4>
+                      <span class="valor">{{indicador.value}}</span>
+                      <span class="limite" [ngClass]="{
+                                  'limite-rojo':indicador.value > indicador.limit,
+                                  'limite-verde':indicador.value < indicador.limit
+                                   }">
+                        {{indicador.limit}}{{indicador.unit}}
+                      </span>
+                    </div>  
+                  
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="boton-mas"> <span> + </span></div>
+</div>

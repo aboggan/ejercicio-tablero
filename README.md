@@ -2,8 +2,9 @@
 
 Ejercicio creado con node y angular 4
 
-## Instalción
+## Instalar dependencias
 
 $ npm install 
-$ ng server -o
 
+## Levantar el server
+$ ng server -o
